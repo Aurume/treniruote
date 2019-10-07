@@ -1,12 +1,13 @@
-/**
- * 
- */
 package bandymas;
+
+import org.springframework.data.repository.CrudRepository;
 
 /**
  * @author User
  *
  */
-public class KlientaiRepository {
+public interface KlientaiRepository extends CrudRepository<Klientai,Integer>{
 
 }
+
+

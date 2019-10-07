@@ -1,12 +1,16 @@
-/**
- * 
- */
 package bandymas;
+
+import org.springframework.data.repository.CrudRepository;
 
 /**
  * @author User
  *
  */
-public class MeniuRepository {
+public interface MeniuRepository extends CrudRepository<Meniu,Integer>{
 
 }
+
+
+
+
+

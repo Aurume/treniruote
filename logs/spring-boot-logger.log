@@ -1,3 +1,0 @@
-2019-10-07 10:14:38,505 INFO org.springframework.boot.StartupInfoLogger [main] Starting TreniruoteApplication on septintas-PC with PID 10528 (C:\Users\User\eclipse_darbai\treniruote\treniruote\target\classes started by User in C:\Users\User\eclipse_darbai\treniruote\treniruote)
-2019-10-07 10:14:38,508 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
-2019-10-07 10:14:39,416 INFO org.springframework.boot.StartupInfoLogger [main] Started TreniruoteApplication in 1.645 seconds (JVM running for 2.148)
