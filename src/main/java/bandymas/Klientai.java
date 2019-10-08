@@ -30,8 +30,8 @@ public class Klientai {
 	private Integer savybAlergPieno;
 	
 	 @JsonIgnoreProperties("klientai")    
-	 @OneToMany(mappedBy = "klientai",cascade = CascadeType.ALL)
-	 //private List<KlientaiKeliones> klientaiKeliones;  //uzsakymai ar kliento info ar kas cia turetu but???????????
+	 @OneToMany(mappedBy="klientai",cascade=CascadeType.ALL)
+	 private List<KlientaiPatiekalai> klientaiPatiekalai;  //uzsakymai ar kliento info ar kas cia turetu but???????????
 	
 	/**
 	 * @return the id
@@ -117,16 +117,15 @@ public class Klientai {
 		this.savybAlergPieno = savybAlergPieno;
 	}
 	
-	/* neaisku ar reikalinga man bus si vieta. ja irgi reiktu sugeneruoti pagal virsuj ta list.
-	public Iterable<KlientaiKeliones> getKlientaiKeliones() {
-		return klientaiKeliones;
+	
+	public Iterable<KlientaiPatiekalai> getKlientaiPatiekalai() {
+		return klientaiPatiekalai;
 	}
 
-	public void setKlientaiKeliones(List<KlientaiKeliones> klientaiKeliones) {
-		this.klientaiKeliones = klientaiKeliones;
+	public void setKlientaiPatiekalai(List<KlientaiPatiekalai> klientaiPatiekalai) {
+		this.klientaiPatiekalai = klientaiPatiekalai;
 	}
 
-	*/
 	
 	
 

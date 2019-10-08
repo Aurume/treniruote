@@ -17,87 +17,18 @@ public class GreetingController {
 	KlientaiRepository klientaiRepository;
 	
 	@Autowired
-	MeniuRepository meniuRepository;	
+	PatiekalaiRepository patiekalaiRepository;	
 	
 	@Autowired
-	UzsakymaiRepository uzsakymaiRepository;
+	KlientaiPatiekalaiRepository klientaiPatiekalaiRepository;
 	
-	@Autowired
-	RekomendacijosRepository rekomendacijosRepository;
-	
-	@GetMapping(path="/saugoti-kelione") // Map ONLY GET Requests
-	public @ResponseBody String saugotiKelione (@RequestParam Integer id 
-			, @RequestParam String pav
-			, @RequestParam String apras
-			, @RequestParam Integer flagPoilsines
-			, @RequestParam Integer flagPazintines	
-			, @RequestParam Integer flagViskasIsk	
-			, @RequestParam Integer flagLaisvPasir
-			) {
-		// @ResponseBody means the returned String is the response, not a view name
-		// @RequestParam means it is a parameter from the GET or POST request
-		
-		String res = "Not done";
-		Keliones n = new Keliones();
-		
-		if (id > 0) {
-		
-			Optional <Keliones> found = kelionesRepository.findById( id );
-		
-			// variantas trynimuiui
-			// uzsakymaiRepository.deleteById(id);
-		
-			if ( found.isPresent() ) {
-			
-			   n = found.get();
-			   n.setId(id);
-			}
-		}
-		
-	    n.setPav( pav );
-	    n.setApras(apras);
-	    n.setFlagPazintines(flagPazintines);
-	    n.setFlagPoilsines(flagPoilsines);
-		n.setFlagViskasIsk(flagViskasIsk);
-		n.setFlagLaisvPasir(flagLaisvPasir);
-	    kelionesRepository.save(n);	
-	    res = "Saved";
-	    
-		return res;
-	}
-	
-	@GetMapping(path="/salinti-kelione") // Map ONLY GET Requests
-	public @ResponseBody String salintiKelione (@RequestParam Integer id 
-			) {
-		// @ResponseBody means the returned String is the response, not a view name
-		// @RequestParam means it is a parameter from the GET or POST request
-		
-		Optional <Keliones> found = kelionesRepository.findById( id );
-		
-		String res = "Not done";
-		
-		if ( found.isPresent() ) {
-			
-			   Keliones n = found.get();
-			   kelionesRepository.deleteById(id);
-			   res = "Deleted";
-		}		
-		return res;
-	}		
-
-	@GetMapping(path="/lst-keliones")
-	public @ResponseBody Iterable<Keliones> getAllKeliones() {
-		// This returns a JSON or XML with the users
-		return kelionesRepository.findAll();
-	}	
-
 	@GetMapping(path="/saugoti-klienta") // Map ONLY GET Requests
 	public @ResponseBody String saugotiKlienta (@RequestParam Integer id 
-			, @RequestParam String pav
-			, @RequestParam Integer flagPoilsines
-			, @RequestParam Integer flagPazintines	
-			, @RequestParam Integer flagViskasIsk	
-			, @RequestParam Integer flagLaisvPasir
+			, @RequestParam String vardas
+			, @RequestParam String pavarde
+			, @RequestParam Integer savybVartojaAlkoholi
+			, @RequestParam Integer savybAlergRiesutai	
+			, @RequestParam Integer savybAlergPieno	
 			) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
@@ -119,12 +50,75 @@ public class GreetingController {
 			}
 		}
 		
-	    n.setPav( pav );
-	    n.setFlagPazintines(flagPazintines);
-	    n.setFlagPoilsines(flagPoilsines);
-		n.setFlagViskasIsk(flagViskasIsk);
-		n.setFlagLaisvPasir(flagLaisvPasir);
+	    n.setVardas( vardas );
+	    n.setPavarde(pavarde);
+	    n.setSavybVartojaAlkoholi(savybVartojaAlkoholi);
+	    n.setSavybAlergRiesutai(savybAlergRiesutai);
+	    n.setSavybAlergPieno(savybAlergPieno);
 	    klientaiRepository.save(n);	
+	    res = "Saved";
+	    
+		return res;
+	}
+	
+	@GetMapping(path="/salinti-patiekala") // Map ONLY GET Requests
+	public @ResponseBody String salintiPatiekala (@RequestParam Integer id
+			, @RequestParam String pav
+			, @RequestParam Integer savyb_yra_riesutai	
+			, @RequestParam Integer savyb_yra_pieno	
+			) {
+		// @ResponseBody means the returned String is the response, not a view name
+		// @RequestParam means it is a parameter from the GET or POST request
+		
+		Optional <Patiekalai> found = patiekalaiRepository.findById( id );
+		
+		String res = "Not done";
+		
+		if ( found.isPresent() ) {
+			
+			   Patiekalai n = found.get();
+			   patiekalaiRepository.deleteById(id);
+			   res = "Deleted";
+		}		
+		return res;
+	}		
+
+	@GetMapping(path="/lst-patiekalai")
+	public @ResponseBody Iterable<Patiekalai> getAllPatiekalai() {
+		// This returns a JSON or XML with the users
+		return patiekalaiRepository.findAll();
+	}	
+
+	@GetMapping(path="/saugoti-patiekala") // Map ONLY GET Requests
+	public @ResponseBody String saugotiPatiekala (@RequestParam Integer id 
+			, @RequestParam String pav
+			, @RequestParam Integer savyb_yra_riesutai
+			, @RequestParam Integer savyb_yra_pieno	
+			) {
+		// @ResponseBody means the returned String is the response, not a view name
+		// @RequestParam means it is a parameter from the GET or POST request
+		
+		String res = "Not done";
+		Patiekalai n = new Patiekalai();
+		
+		if (id > 0) {
+		
+			Optional <Patiekalai> found = patiekalaiRepository.findById( id );
+		
+			// variantas trynimuiui
+			// uzsakymaiRepository.deleteById(id);
+		
+			if ( found.isPresent() ) {
+			
+			   n = found.get();
+			   n.setId(id);
+			}
+		}
+		
+	    n.setPav( pav );
+	    n.setSavyb_yra_riesutai(savyb_yra_riesutai);
+	    n.setSavyb_yra_pieno(savyb_yra_pieno);  
+	    patiekalaiRepository.save(n);	
 	    res = "Saved";
 	    
 		return res;
@@ -168,22 +162,22 @@ public class GreetingController {
 		return found;
 	}	
 	
-	@GetMapping(path="/kliento-kelione") // Map ONLY GET Requests
-	public @ResponseBody String saugotiProduktaPatiekalo (@RequestParam Integer id 
-			, @RequestParam(defaultValue="0") Integer id_kl
-			, @RequestParam(defaultValue="0") Integer id_keliones
+	@GetMapping(path="/kliento-patiekalas") // Map ONLY GET Requests
+	public @ResponseBody String saugotiKlientoPatiekalo (@RequestParam Integer id 
+			, @RequestParam(defaultValue="0") Integer klientai_id
+			, @RequestParam(defaultValue="0") Integer patiekalai_id
 			) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 		
 		String res = "Not done";
-		KlientaiKeliones n = new KlientaiKeliones();
+		KlientaiPatiekalai n = new KlientaiPatiekalai();
 		
-		System.out.println ( "id: " + id + " kliento. id: " + id_kl + " keliones. id " + id_keliones );
+		System.out.println ( "id: " + id + " kliento. id: " + klientai_id + " patiekalo. id " + patiekalai_id );
 		
 		if (id > 0) {
 		
-			Optional <KlientaiKeliones> found = klientaiKelionesRepository.findById( id );
+			Optional <KlientaiPatiekalai> found = klientaiPatiekalaiRepository.findById( id );
 		
 			// variantas trynimuiui
 			// uzsakymaiRepository.deleteById(id);
@@ -196,35 +190,35 @@ public class GreetingController {
 			
 		} else {
 		
-			if ( ( id_kl > 0 ) && ( id_keliones > 0 ) ) {
+			if ( ( klientai_id > 0 ) && ( patiekalai_id > 0 ) ) {
 				
-				n.setKlientai_id ( id_kl );
-				n.setKeliones_id( id_keliones );
+				n.setKlientaiId ( klientai_id );
+				n.setPatiekalaiId( patiekalai_id );
 			}
 		}
 		
 		System.out.println ( n.toString() );			   			   
-		klientaiKelionesRepository.save(n);	
+		klientaiPatiekalaiRepository.save(n);	
 		res = "Saved";
 	    
 		return res;
 	}
 	
-	@GetMapping(path="/salinti-kliento-kelione") // Map ONLY GET Requests
-	public @ResponseBody String salintiKlientoKelione (@RequestParam Integer id_kl
+	@GetMapping(path="/salinti-kliento-patiekala") // Map ONLY GET Requests
+	public @ResponseBody String salintiKlientoPatiekala (@RequestParam Integer klientai_id
 			, @RequestParam Integer id 
 			) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 		
-		Optional <KlientaiKeliones> found = klientaiKelionesRepository.findById( id );
+		Optional <KlientaiPatiekalai> found = klientaiPatiekalaiRepository.findById( id );
 		
 		String res = "Not done";
 		
 		if ( found.isPresent() ) {
 			
-			   KlientaiKeliones n = found.get();
-			   klientaiKelionesRepository.deleteById(id);
+			   KlientaiPatiekalai n = found.get();
+			   klientaiPatiekalaiRepository.deleteById(id);
 			   res = "Deleted";
 		}		
 		return res;
