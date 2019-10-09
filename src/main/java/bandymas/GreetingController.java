@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(path="/greeting") // This means URL's start with /demo (after Application path)
+@RequestMapping(path="/ajax") // This means URL's start with /demo (after Application path)
 public class GreetingController {
 
 	@Autowired
@@ -62,11 +62,7 @@ public class GreetingController {
 	}
 	
 	@GetMapping(path="/salinti-patiekala") // Map ONLY GET Requests
-	public @ResponseBody String salintiPatiekala (@RequestParam Integer id
-			, @RequestParam String pav
-			, @RequestParam Integer savyb_yra_riesutai	
-			, @RequestParam Integer savyb_yra_pieno	
-			) {
+	public @ResponseBody String salintiPatiekala (@RequestParam Integer id) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
 		
@@ -92,8 +88,8 @@ public class GreetingController {
 	@GetMapping(path="/saugoti-patiekala") // Map ONLY GET Requests
 	public @ResponseBody String saugotiPatiekala (@RequestParam Integer id 
 			, @RequestParam String pav
-			, @RequestParam Integer savyb_yra_riesutai
-			, @RequestParam Integer savyb_yra_pieno	
+			, @RequestParam Integer savybYraRiesutai
+			, @RequestParam Integer savybYraPieno	
 			) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
@@ -116,8 +112,8 @@ public class GreetingController {
 		}
 		
 	    n.setPav( pav );
-	    n.setSavybYraRiesutai(savyb_yra_riesutai);
-	    n.setSavybYraPieno(savyb_yra_pieno);  
+	    n.setSavybYraRiesutai(savybYraRiesutai);
+	    n.setSavybYraPieno(savybYraPieno);  
 	    patiekalaiRepository.save(n);	
 	    res = "Saved";
 	    

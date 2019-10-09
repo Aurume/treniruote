@@ -42,7 +42,7 @@
 			params = {
 			
 				fields: [ 'vardas',  'pavarde', 'savybVartojaAlkoholi', 'savybAlergRiesutai', 'savybAlergPieno' ] //lentelės eilučių pavadinimai
-				, fields_names: [ 'Klientas', 'Riešutai', 'Pieno<br>produktai' ] // čia lentelės laukelių tokius pavadinimus rodys kokie įrašyti. ir tarp žodžių geriau nenaudoti jokių pabraukimų.
+				, fields_names: [ 'Vardas', 'Pavarde', 'Vartoja<br>alkoholį', 'Riešutai', 'Pieno<br>produktai' ] // čia lentelės laukelių tokius pavadinimus rodys kokie įrašyti. ir tarp žodžių geriau nenaudoti jokių pabraukimų.
 				, url : 'http://localhost:8080/ajax/lst-klientai' 
 				, field_data: ''
 				, id_html_saraso: 'klientai'
@@ -52,16 +52,16 @@
 				, title_dialog_form: 'Klientas'  // dialogo formos lango pavadinimas
 				, url_save_rec: 'http://localhost:8080/ajax/saugoti-klienta'
 				//, url_delete_rec:  'http://localhost:8080/ajax/salinti-klienta'
-				, fields_edit:  [ 'vardas', 'pavarde', 'savybAlergRiesutai', 'savybAlergPieno'] //laukeliai kuriuos noriu leisti redaguoti
-				, fields_ed_types: [ 'text', 'checkbox', 'checkbox', 'checkbox', 'checkbox' ] 
+				, fields_edit:  [ 'vardas', 'pavarde', 'savybVartojaAlkoholi', 'savybAlergRiesutai', 'savybAlergPieno'] //laukeliai kuriuos noriu leisti redaguoti
+				, fields_ed_types: [ 'text', 'text', 'checkbox', 'checkbox', 'checkbox' ] 
 				, field_name: 'vardas' // laukelis kuris įrašytas rodys pvz ką tuo metu redaguoji.
 				//, details_url: [ { url: 'klientas?id=', name: 'plačiau' }, { url: 'pasiulymai?id=', name: 'pasiūlymai' } ] 	šito gali ir nebūti.							
 			}
 			
-			crud_kategoriju = new crud ( params );
+			crud_klientu = new crud ( params );
 			
-			crud_kategoriju.initEmpty();
-			crud_kategoriju.refreshData();
+			crud_klientu.initEmpty();
+			crud_klientu.refreshData();
 			
 		});			
 	</script>
@@ -72,8 +72,13 @@
 </nav>
 <div id="klientai-dialog" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; max-height: none; height: 259.053px;">
 <p class="validateTips">Visi laukeliai turi buti užpildyti.</p><p class="name_item" id="name_item">Naujas klientas</p>
-<form action=""><fieldset><label for="pav">Klientas</label>
-<input type="text" name="pav" id="pav" value="" class="text ui-widget-content ui-corner-all"><br><br>
+<form action="">
+<fieldset><label for="pav">Vardas</label>
+<input type="text" name="vardas" id="vardas" value="" class="text ui-widget-content ui-corner-all">
+<fieldset><label for="pav">Pavardė</label>
+<input type="text" name="pavarde" id="pavarde" value="" class="text ui-widget-content ui-corner-all">
+
+<input  class="ch_lab" type="checkbox" name="savybVartojaAlkoholi" id="savybVartojaAlkoholi" value="1"> - <label class="ch_lab" for="savybVartojaAlkoholi">alkoholis</label><br>
 <input  class="ch_lab" type="checkbox" name="savybAlergRiesutai" id="savybAlergRiesutai" value="1"> - <label class="ch_lab" for="savybAlergRiesutai">riešutai</label><br>
 <input  class="ch_lab" type="checkbox" name="savybAlergPieno" id="savybAlergPieno" value="1"> - <label class="ch_lab"  for="savybAlergPieno">pieno<br>produktai</label><br>
 
