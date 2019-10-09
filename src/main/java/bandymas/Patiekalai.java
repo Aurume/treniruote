@@ -27,6 +27,20 @@ public class Patiekalai {
 	  @OneToMany(mappedBy = "patiekalai",cascade = CascadeType.ALL)
 	private List<Klientai> klientai;    
 */
+	 public Patiekalai () {
+		 
+	 }
+	 
+	 
+	 public Patiekalai( String pavadinimas, Integer savybe_yra_riesutu, Integer savybe_yra_pieno ) {
+		 
+		 pav = pavadinimas;
+		 
+		 savybYraRiesutai = savybe_yra_riesutu;
+		 
+		 savybYraPieno = savybe_yra_pieno; 
+	 }
+	 
 	/**
 	 * @return the id
 	 */

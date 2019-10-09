@@ -10,7 +10,7 @@ package bandymas;
 public enum Menu {
 
 		Klientai("/klientai")
-		, Keliones("/keliones")
+		, Patiekalai("/patiekalai")
 		, Pradža("/");
 		
 		private final String itemurl;

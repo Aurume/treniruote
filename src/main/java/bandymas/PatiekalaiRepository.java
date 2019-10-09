@@ -7,6 +7,8 @@ import org.springframework.data.repository.CrudRepository;
  *
  */
 public interface PatiekalaiRepository extends CrudRepository<Patiekalai,Integer>{
+	
+	 Patiekalai findByPav(String pav);
 
 }
 
