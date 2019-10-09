@@ -16,16 +16,16 @@ public class Patiekalai {
 	 
 	 private String pav;
 	 
-	 private Integer savyb_yra_riesutai;
+	 private Integer savybYraRiesutai;
 	 
-	 private Integer savyb_yra_pieno;
+	 private Integer savybYraPieno;
 	 
 /*	 
 	 @OneToMany(mappedBy = "patiekalai",cascade = CascadeType.ALL)
 	 private List<KlientaiPatiekalai> klientaiPatiekalai;
 
 	  @OneToMany(mappedBy = "patiekalai",cascade = CascadeType.ALL)
-	private List<Klientai> klientai;    // cia pridejus sujungia patiekalus su uzsakymais. o man dabar reikia sujungti klientus su patiekalais?
+	private List<Klientai> klientai;    
 */
 	/**
 	 * @return the id
@@ -58,29 +58,29 @@ public class Patiekalai {
 	/**
 	 * @return the savyb_yra_riesutai
 	 */
-	public Integer getSavyb_yra_riesutai() {
-		return savyb_yra_riesutai;
+	public Integer getSavybYraRiesutai() {
+		return savybYraRiesutai;
 	}
 
 	/**
 	 * @param savyb_yra_riesutai the savyb_yra_riesutai to set
 	 */
-	public void setSavyb_yra_riesutai(Integer savyb_yra_riesutai) {
-		this.savyb_yra_riesutai = savyb_yra_riesutai;
+	public void setSavybYraRiesutai(Integer savyb_yra_riesutai) {
+		this.savybYraRiesutai = savyb_yra_riesutai;
 	}
 
 	/**
 	 * @return the savyb_yra_pieno
 	 */
-	public Integer getSavyb_yra_pieno() {
-		return savyb_yra_pieno;
+	public Integer getSavybYraPieno() {
+		return savybYraPieno;
 	}
 
 	/**
 	 * @param savyb_yra_pieno the savyb_yra_pieno to set
 	 */
-	public void setSavyb_yra_pieno(Integer savyb_yra_pieno) {
-		this.savyb_yra_pieno = savyb_yra_pieno;
+	public void setSavybYraPieno(Integer savyb_yra_pieno) {
+		this.savybYraPieno = savyb_yra_pieno;
 	}
 
 	/**

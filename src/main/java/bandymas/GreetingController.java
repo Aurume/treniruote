@@ -116,32 +116,14 @@ public class GreetingController {
 		}
 		
 	    n.setPav( pav );
-	    n.setSavyb_yra_riesutai(savyb_yra_riesutai);
-	    n.setSavyb_yra_pieno(savyb_yra_pieno);  
+	    n.setSavybYraRiesutai(savyb_yra_riesutai);
+	    n.setSavybYraPieno(savyb_yra_pieno);  
 	    patiekalaiRepository.save(n);	
 	    res = "Saved";
 	    
 		return res;
 	}
-	
-	@GetMapping(path="/salinti-klienta") // Map ONLY GET Requests
-	public @ResponseBody String salintiKlienta (@RequestParam Integer id 
-			) {
-		// @ResponseBody means the returned String is the response, not a view name
-		// @RequestParam means it is a parameter from the GET or POST request
-		
-		Optional <Klientai> found = klientaiRepository.findById( id );
-		
-		String res = "Not done";
-		
-		if ( found.isPresent() ) {
 			
-			   Klientai n = found.get();
-			   klientaiRepository.deleteById(id);
-			   res = "Deleted";
-		}		
-		return res;
-	}		
 
 	@GetMapping(path="/lst-klientai")
 	public @ResponseBody Iterable<Klientai> getAllKlientai() {
