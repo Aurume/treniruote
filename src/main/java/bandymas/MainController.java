@@ -56,7 +56,7 @@ public class MainController {
         return "klientas";
     }  
    
-    /*
+    
 	@GetMapping(path="/pasiulymai")
 	public  String											
 		getPasiulymai(
@@ -66,10 +66,10 @@ public class MainController {
 
 		Session session = this.sessionFactory().openSession(); 
 		
-		Rekomendacijos pasiulymai =  new Pasiulymai( session );
+		Pasiulymai pasiulymai =  new Pasiulymai( session );
         model.addAttribute("lst_pasiulymai", pasiulymai.pasiulymai( id ) );
         model.addAttribute("lst_menu", Menu.values() );        
 		return "pasiulymai";
 	} 
-	*/   
+  
 }
