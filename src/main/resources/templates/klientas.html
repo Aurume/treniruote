@@ -49,7 +49,7 @@
 				params = {
 				
 					fields: [ 
-						'keliones.pav', 
+						'keliones.pav',                                                             //kas cia turetu but?
 						'keliones.apras', 
 						'keliones.flagPoilsines', 
 						'flagPazintines', 
@@ -64,8 +64,8 @@
 					, dialog_size_x: 400
 					, dialog_size_y: 490
 					, title_dialog_form: 'Kelione'
-					, url_save_rec: 'http://localhost:8080/ajax/kliento-kelione?id_kl=' + id
-					, url_delete_rec:  'http://localhost:8080/ajax/salinti-kliento-kelione?id_kl=' + id
+					, url_save_rec: 'http://localhost:8080/ajax/kliento-patiekalas?id_kl=' + id                    //kas tas id_kl????
+					, url_delete_rec:  'http://localhost:8080/ajax/salinti-kliento-patiekala?id_kl=' + id
 					, fields_edit:  [ 'id_keliones' ]
 					, fields_ed_types: [ 'select' ]
 					, field_name: 'keliones.pav'
