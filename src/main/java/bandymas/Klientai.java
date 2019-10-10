@@ -23,16 +23,16 @@ public class Klientai {
 	
 	private String pavarde;
 	
-	private Integer savybVartojaAlkoholi;
+	private Integer flagVartojaAlkoholi;
 	
-	private Integer savybAlergRiesutai;
+	private Integer flagAlergRiesutai;
 	
-	private Integer savybAlergPieno;
+	private Integer flagAlergPieno;
 	
 	 @JsonIgnoreProperties("klientai")    
 	 @OneToMany(mappedBy="klientai",cascade=CascadeType.ALL)
 	 private List<KlientaiPatiekalai> klientaiPatiekalai;  //uzsakymai ar kliento info ar kas cia turetu but???????????
-	
+
 	/**
 	 * @return the id
 	 */
@@ -76,61 +76,60 @@ public class Klientai {
 	}
 
 	/**
-	 * @return the savybVartojaAlkoholi
+	 * @return the flagVartojaAlkoholi
 	 */
-	public Integer getSavybVartojaAlkoholi() {
-		return savybVartojaAlkoholi;
+	public Integer getFlagVartojaAlkoholi() {
+		return flagVartojaAlkoholi;
 	}
 
 	/**
-	 * @param savybVartojaAlkoholi the savybVartojaAlkoholi to set
+	 * @param flagVartojaAlkoholi the flagVartojaAlkoholi to set
 	 */
-	public void setSavybVartojaAlkoholi(Integer savybVartojaAlkoholi) {
-		this.savybVartojaAlkoholi = savybVartojaAlkoholi;
+	public void setFlagVartojaAlkoholi(Integer flagVartojaAlkoholi) {
+		this.flagVartojaAlkoholi = flagVartojaAlkoholi;
 	}
 
 	/**
-	 * @return the savybAlergRiesutai
+	 * @return the flagAlergRiesutai
 	 */
-	public Integer getSavybAlergRiesutai() {
-		return savybAlergRiesutai;
+	public Integer getFlagAlergRiesutai() {
+		return flagAlergRiesutai;
 	}
 
 	/**
-	 * @param savybAlergRiesutai the savybAlergRiesutai to set
+	 * @param flagAlergRiesutai the flagAlergRiesutai to set
 	 */
-	public void setSavybAlergRiesutai(Integer savybAlergRiesutai) {
-		this.savybAlergRiesutai = savybAlergRiesutai;
+	public void setFlagAlergRiesutai(Integer flagAlergRiesutai) {
+		this.flagAlergRiesutai = flagAlergRiesutai;
 	}
 
 	/**
-	 * @return the savybAlergPieno
+	 * @return the flagAlergPieno
 	 */
-	public Integer getSavybAlergPieno() {
-		return savybAlergPieno;
+	public Integer getFlagAlergPieno() {
+		return flagAlergPieno;
 	}
 
 	/**
-	 * @param savybAlergPieno the savybAlergPieno to set
+	 * @param flagAlergPieno the flagAlergPieno to set
 	 */
-	public void setSavybAlergPieno(Integer savybAlergPieno) {
-		this.savybAlergPieno = savybAlergPieno;
+	public void setFlagAlergPieno(Integer flagAlergPieno) {
+		this.flagAlergPieno = flagAlergPieno;
 	}
-	
-	
+
+	/**
+	 * @return the klientaiPatiekalai
+	 */
 	public Iterable<KlientaiPatiekalai> getKlientaiPatiekalai() {
 		return klientaiPatiekalai;
 	}
 
+	/**
+	 * @param klientaiPatiekalai the klientaiPatiekalai to set
+	 */
 	public void setKlientaiPatiekalai(List<KlientaiPatiekalai> klientaiPatiekalai) {
 		this.klientaiPatiekalai = klientaiPatiekalai;
 	}
-
-	
-	
-
-
-	
 	
 	
 }

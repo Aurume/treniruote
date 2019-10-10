@@ -39,7 +39,7 @@
 
 			params = {
 			
-				fields: [ 'pav', 'savybYraPieno', 'savybYraRiesutai' ]
+				fields: [ 'pav', 'flagYraPieno', 'flagYraRiesutai' ]
 				, fields_names: [ 'Pavadinimas', 'Yra pieno', 'Yra riešutų' ]
 				, url : 'http://localhost:8080/ajax/lst-patiekalai'
 				, field_data: ''
@@ -50,7 +50,7 @@
 				, title_dialog_form: 'Patiekalas'
 				, url_save_rec: 'http://localhost:8080/ajax/saugoti-patiekala'
 				, url_delete_rec:  'http://localhost:8080/ajax/salinti-patiekala'
-				, fields_edit:  [ 'pav', 'savybYraPieno', 'savybYraRiesutai' ]
+				, fields_edit:  [ 'pav', 'flagYraPieno', 'flagYraRiesutai' ]
 				, fields_ed_types: [ 'text', 'checkbox', 'checkbox' ]
 				, field_name: 'pav'
 			}
@@ -70,8 +70,8 @@
 <div id="dialogo_forma_pat" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; max-height: none; height: 359.053px;">
 <p class="validateTips">Visi laukeliai turi buti užpildyti.</p><p class="name_item" id="name_item">Naujas Patiekalas</p>
 <form action=""><fieldset><label for="pav">Pavadinimas</label><input type="text" name="pav" id="pav" value="" class="text ui-widget-content ui-corner-all">
-<input class="ch_lab" type="checkbox" name="savybYraPieno" id="savybYraPieno" value="1"> - <label class="ch_lab" for="savybYraPieno">Yra pieno</label>
-<input class="ch_lab" type="checkbox" name="savybYraRiesutai" id="savybYraRiesutai" value="1">- <label class="ch_lab" for="savybYraRiesutai">Yra riešutų</label>
+<input class="ch_lab" type="checkbox" name="flagYraPieno" id="flagYraPieno" value="1"> - <label class="ch_lab" for="flagYraPieno">Yra pieno</label>
+<input class="ch_lab" type="checkbox" name="flagYraRiesutai" id="flagYraRiesutai" value="1">- <label class="ch_lab" for="flagYraRiesutai">Yra riešutų</label>
 <!-- Allow form submission with keyboard without duplicating the dialog button -->
 <input type="submit" tabindex="-1" style="position:absolute; top:-1000px"></fieldset>
 <input type="hidden" name="id" id="id_rec" value="0"></form></div>

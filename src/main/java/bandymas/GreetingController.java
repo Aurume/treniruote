@@ -26,9 +26,9 @@ public class GreetingController {
 	public @ResponseBody String saugotiKlienta (@RequestParam Integer id 
 			, @RequestParam String vardas
 			, @RequestParam String pavarde
-			, @RequestParam Integer savybVartojaAlkoholi
-			, @RequestParam Integer savybAlergRiesutai	
-			, @RequestParam Integer savybAlergPieno	
+			, @RequestParam Integer flagVartojaAlkoholi
+			, @RequestParam Integer flagAlergRiesutai	
+			, @RequestParam Integer flagAlergPieno	
 			) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
@@ -52,9 +52,9 @@ public class GreetingController {
 		
 	    n.setVardas( vardas );
 	    n.setPavarde(pavarde);
-	    n.setSavybVartojaAlkoholi(savybVartojaAlkoholi);
-	    n.setSavybAlergRiesutai(savybAlergRiesutai);
-	    n.setSavybAlergPieno(savybAlergPieno);
+	    n.setFlagVartojaAlkoholi(flagVartojaAlkoholi);
+	    n.setFlagAlergRiesutai(flagAlergRiesutai);
+	    n.setFlagAlergPieno(flagAlergPieno);
 	    klientaiRepository.save(n);	
 	    res = "Saved";
 	    
@@ -107,8 +107,8 @@ public class GreetingController {
 	@GetMapping(path="/saugoti-patiekala") // Map ONLY GET Requests
 	public @ResponseBody String saugotiPatiekala (@RequestParam Integer id 
 			, @RequestParam String pav
-			, @RequestParam Integer savybYraRiesutai
-			, @RequestParam Integer savybYraPieno	
+			, @RequestParam Integer flagYraRiesutai
+			, @RequestParam Integer flagYraPieno	
 			) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
@@ -131,8 +131,8 @@ public class GreetingController {
 		}
 		
 	    n.setPav( pav );
-	    n.setSavybYraRiesutai(savybYraRiesutai);
-	    n.setSavybYraPieno(savybYraPieno);  
+	    n.setFlagYraRiesutai(flagYraRiesutai);
+	    n.setFlagYraPieno(flagYraPieno);  
 	    patiekalaiRepository.save(n);	
 	    res = "Saved";
 	    

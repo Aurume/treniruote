@@ -16,9 +16,9 @@ public class Patiekalai {
 	 
 	 private String pav;
 	 
-	 private Integer savybYraRiesutai;
+	 private Integer flagYraRiesutai;
 	 
-	 private Integer savybYraPieno;
+	 private Integer flagYraPieno;
 	 
 /*	 
 	 @OneToMany(mappedBy = "patiekalai",cascade = CascadeType.ALL)
@@ -36,17 +36,19 @@ public class Patiekalai {
 		 
 		 pav = pavadinimas;
 		 
-		 savybYraRiesutai = savybe_yra_riesutu;
+		 flagYraRiesutai = savybe_yra_riesutu;
 		 
-		 savybYraPieno = savybe_yra_pieno; 
+		 flagYraRiesutai = savybe_yra_pieno; 
 	 }
-	 
+
+
 	/**
 	 * @return the id
 	 */
 	public Integer getId() {
 		return id;
 	}
+
 
 	/**
 	 * @param id the id to set
@@ -55,12 +57,14 @@ public class Patiekalai {
 		this.id = id;
 	}
 
+
 	/**
 	 * @return the pav
 	 */
 	public String getPav() {
 		return pav;
 	}
+
 
 	/**
 	 * @param pav the pav to set
@@ -69,63 +73,37 @@ public class Patiekalai {
 		this.pav = pav;
 	}
 
+
 	/**
-	 * @return the savyb_yra_riesutai
+	 * @return the flagYraRiesutai
 	 */
-	public Integer getSavybYraRiesutai() {
-		return savybYraRiesutai;
+	public Integer getFlagYraRiesutai() {
+		return flagYraRiesutai;
 	}
 
+
 	/**
-	 * @param savyb_yra_riesutai the savyb_yra_riesutai to set
+	 * @param flagYraRiesutai the flagYraRiesutai to set
 	 */
-	public void setSavybYraRiesutai(Integer savyb_yra_riesutai) {
-		this.savybYraRiesutai = savyb_yra_riesutai;
+	public void setFlagYraRiesutai(Integer flagYraRiesutai) {
+		this.flagYraRiesutai = flagYraRiesutai;
 	}
 
+
 	/**
-	 * @return the savyb_yra_pieno
+	 * @return the flagYraPieno
 	 */
-	public Integer getSavybYraPieno() {
-		return savybYraPieno;
+	public Integer getFlagYraPieno() {
+		return flagYraPieno;
 	}
 
+
 	/**
-	 * @param savyb_yra_pieno the savyb_yra_pieno to set
+	 * @param flagYraPieno the flagYraPieno to set
 	 */
-	public void setSavybYraPieno(Integer savyb_yra_pieno) {
-		this.savybYraPieno = savyb_yra_pieno;
+	public void setFlagYraPieno(Integer flagYraPieno) {
+		this.flagYraPieno = flagYraPieno;
 	}
-
-	/**
-	 * @return the klientai
-	 *
-	public List<Klientai> getKlientai() {
-		return klientai;
-	}
-
-	/**
-	 * @param klientai the klientai to set
-	 *
-	public void setKlientai(List<Klientai> klientai) {
-		this.klientai = klientai;
-	}
-
-	/**
-	 * @return the klientai_patiekalai
-	 *
-	public List<KlientaiPatiekalai> getKlientai_patiekalai() {
-		return klientaiPatiekalai;
-	}
-
-	/**
-	 * @param klientai_patiekalai the klientai_patiekalai to set
-	 *
-	public void setKlientai_patiekalai(List<KlientaiPatiekalai> klientaiPatiekalai) {
-		this.klientaiPatiekalai = klientaiPatiekalai;
-	}
-	*/
-
 	
 	
 	/*

@@ -11,7 +11,7 @@ public enum Menu {
 
 		Klientai("/klientai")
 		, Patiekalai("/patiekalai")
-		, Pradža("/");
+		, Pradžia("/");
 		
 		private final String itemurl;
 		
