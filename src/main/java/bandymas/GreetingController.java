@@ -161,8 +161,8 @@ public class GreetingController {
 	
 	@GetMapping(path="/kliento-patiekalas") // Map ONLY GET Requests
 	public @ResponseBody String saugotiKlientoPatiekalo (@RequestParam Integer id 
-			, @RequestParam(defaultValue="0") Integer klientai_id
-			, @RequestParam(defaultValue="0") Integer patiekalai_id
+			, @RequestParam(defaultValue="0") Integer id_kl
+			, @RequestParam(defaultValue="0") Integer id_patiekalo
 			) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
@@ -170,7 +170,7 @@ public class GreetingController {
 		String res = "Not done";
 		KlientaiPatiekalai n = new KlientaiPatiekalai();
 		
-		System.out.println ( "id: " + id + " kliento. id: " + klientai_id + " patiekalo. id " + patiekalai_id );
+		System.out.println ( "id: " + id + " kliento. id: " + id_kl + " patiekalo. id " + id_patiekalo );
 		
 		if (id > 0) {
 		
@@ -187,10 +187,10 @@ public class GreetingController {
 			
 		} else {
 		
-			if ( ( klientai_id > 0 ) && ( patiekalai_id > 0 ) ) {
+			if ( ( id_kl > 0 ) && ( id_patiekalo > 0 ) ) {
 				
-				n.setKlientaiId ( klientai_id );
-				n.setPatiekalaiId( patiekalai_id );
+				n.setKlientaiId ( id_kl );
+				n.setPatiekalaiId( id_patiekalo );
 			}
 		}
 		

@@ -49,53 +49,50 @@
 				params = {
 				
 					fields: [ 
-						'keliones.pav',                                                             //kas cia turetu but?
-						'keliones.apras', 
-						'keliones.flagPoilsines', 
-						'flagPazintines', 
-						'keliones.flagViskasIsk', 
-						'keliones.flagLaisvPasir' 
+						'patiekalai.pav',                                                             //kas cia turetu buti
+						'patiekalai.flagYraPieno', 
+						'patiekalai.flagYraRiesutai'
 					]
-					, fields_names: [ 'Kelionė', 'Aprašymas', 'poilsinė', 'pažintinė', 'viskas<br>įsk.', 'laisv.<br>pasir.' ]
+					, fields_names: [ 'Pavadinimas', 'Yra<br>Pieno', 'Yra<br>rie-<br>šu-<br>tų' ]
 					, url : 'http://localhost:8080/ajax/klientas?id=' + id
-					, field_data: '.klientaiKeliones'
-					, id_html_saraso: 'keliones'
-					, id_html_dialog_formos: 'keliones-dialog'
+					, field_data: '.klientaiPatiekalai'
+					, id_html_saraso: 'patiekalai'
+					, id_html_dialog_formos: 'patiekalai-dialog'
 					, dialog_size_x: 400
 					, dialog_size_y: 490
-					, title_dialog_form: 'Kelione'
+					, title_dialog_form: 'Užsakymai'
 					, url_save_rec: 'http://localhost:8080/ajax/kliento-patiekalas?id_kl=' + id                    //kas tas id_kl????
 					, url_delete_rec:  'http://localhost:8080/ajax/salinti-kliento-patiekala?id_kl=' + id
-					, fields_edit:  [ 'id_keliones' ]
+					, fields_edit:  [ 'id_patiekalo' ]
 					, fields_ed_types: [ 'select' ]
-					, field_name: 'keliones.pav'
+					, field_name: 'patiekalai.pav'
 				}
 				
-				crud_kategoriju = new crud ( params );
+				crud_uzsakymu = new crud ( params );
 				
-				crud_kategoriju.initEmpty();
-				crud_kategoriju.refreshData();
+				crud_uzsakymu.initEmpty();
+				crud_uzsakymu.refreshData();
 				
 				
 				$.ajax({
-						url: "http://localhost:8080/ajax/kliento-patiekalai" 
+						url: "http://localhost:8080/ajax/lst-patiekalai" 
 				}).done(
 				
-					function( keliones_all ) {
+					function( patiekalai_all ) {
 
 						options = '';
 																					// alert ( 'kiek produktu: ' + this.produktai.length );
-						for ( i= 0; i < keliones_all.length; i++ ) {
+						for ( i= 0; i < patiekalai_all.length; i++ ) {
 																					//alert ( 'i, id, pav:' + i + ',' + this.produktai [ i ].id + ', ' + this.produktai [ i ].pav )
-							options += '<option value="' + keliones_all [ i ].id + '">' + keliones_all [ i ].pav + '</option>';
+							options += '<option value="' + patiekalai_all [ i ].id + '">' + patiekalai_all [ i ].pav + '</option>';
 						}
 						
-						selectas_html = '<label for="id_keliones">Kelionė</label>' +
-							'<select type="text" name="id_keliones" id="id_keliones" class="text ui-widget-content ui-corner-all">' +
+						selectas_html = '<label for="id_patiekalo">Patiekalas</label>' +
+							'<select type="text" name="id_patiekalo" id="id_patiekalo" class="text ui-widget-content ui-corner-all">' +
 								options +
 							'</select>';
 							
-						$( '#kelioniu_selectas' ).html ( selectas_html );	
+						$( '#patiekalu_selectas' ).html ( selectas_html );	
 					}
 				);				
 				
@@ -107,16 +104,16 @@
 <nav>
 <a th:each="menu_item : ${lst_menu}" th:href="${menu_item.itemurl()}" th:text="${menu_item}"></a>
 </nav>
-<div id="keliones-dialog" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; max-height: none; height: 259.053px;">
+<div id="patiekalai-dialog" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; max-height: none; height: 259.053px;">
 <p class="validateTips">Visi laukeliai turi buti užpildyti.</p><p class="name_item" id="name_item">Nauja Kelione</p>
 <form action=""><fieldset>
-<div id="kelioniu_selectas">
+<div id="patiekalu_selectas">
 </div>
 <!-- Allow form submission with keyboard without duplicating the dialog button -->
 <input type="submit" tabindex="-1" style="position:absolute; top:-1000px"></fieldset><input type="hidden" name="id" id="id_rec" value="0">
 </form>
 </div>
-	<div id="keliones">
+	<div id="patiekalai">
 	</div>
 </body>
 </html>

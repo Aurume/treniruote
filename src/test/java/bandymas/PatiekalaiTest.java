@@ -36,7 +36,7 @@ public class PatiekalaiTest {
         assertEquals(pat.getPav(), patiekalai.getPav());
         																				 // System.out.println (" kt4 ! ");   
         																				 // -- neveiks kt4 nespaudina .. 
-        assertEquals(pat.getSavybYraPieno(), patiekalai.getSavybYraRiesutai());// ar tureciau cia deti savybes?
+        assertEquals(pat.getFlagYraPieno(), patiekalai.getFlagYraPieno());
         																				 // System.out.println (" kt5 ! ");      
         
         patiekalaiRepository.deleteById(patiekal.getId());
