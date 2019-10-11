@@ -22,12 +22,12 @@ public class Pasiulymai {
 		    this.em = em;
 	  }
 	  
-	  public List<Patiekalai> pasiulymai( Integer id ) {       // ar tikrai patiekalu sarasas
+	  public List<Patiekalai> pasiulymai( Integer id ) {       // ar tikrai patiekalu sarasas?????
 		  
 		  	String qw_pasiulymai =
 		  				
 		  		"SELECT SQL_CALC_FOUND_ROWS " 
-					+ 	"`patiekalai`.*"
+					+ 	"`patiekalai`.`id`,`patiekalai`.`pav`, `patiekalai`.`flag_yra_pieno`, `patiekalai`.`flag_yra_riesutai`"  
 					+ "FROM "
 					+ 		"`patiekalai` "  
 					+ "LEFT JOIN "
@@ -42,18 +42,8 @@ public class Pasiulymai {
 					
 					+ 			"`klientai`.`id`=" + id
 					+ 		") "					
-					+ "WHERE "
-						+ 		"`klientai_patiekalai`.`id` IS NULL"
-						+ " AND "
-						+  		"`klientai`.`flag_alerg_pieno`=`patiekalai`.`flag_yra_pieno`" 
-						+ " AND "	
-						+		"`klientai`.`flag_alerg_riesutai`=`patiekalai`.`flag_yra_riesutu`"
-						+ " AND "
-						+  		"`klientai`.`flag_vartoja_alkoholi`=`patiekalai`.`flag_viskas_isk`" // kuom pakeisti viskas iskaiciuota???
-						//+ " AND "	
-						//+		"`klientai`.`flag_laisv_pasir`=`keliones`.`flag_laisv_pasir`"	
-				+ " GROUP BY" 
-				+	   " `patiekalai`.`id` "
+					//+ "WHERE "
+						//+ 		"`klientai_patiekalai`.`id` IS NULL"
 					;
 		  	System.out.println ( qw_pasiulymai );
 		    Query query = em.createNativeQuery ( qw_pasiulymai );

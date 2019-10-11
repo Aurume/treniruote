@@ -21,7 +21,7 @@ import org.hibernate.Session;
  */
 
 //@Repository
-public class PatiekalaiRekomenduojami {
+public class PatiekalaiRekomenduojami {														//šita dalį padaryti kai jau turėsiu mėgstamiausius patiekalus.
 	 
    // @Autowired //(unitName="TopPatiekalaiAtaskaita")	
 	  protected Session em;	
@@ -31,16 +31,19 @@ public class PatiekalaiRekomenduojami {
 		    this.em = em;
 	  }	
 	  
-	  public List<Pasiulymai> Pasiulymai( String laikotarpis_nuo, String laikotarpis_iki ) {
+	  /*public List<Pasiulymai> Pasiulymai( String laikotarpis_nuo, String laikotarpis_iki ) {
 		  
 		  	String qw_top_patiekalai =
-		  				
+		  
+	
+		  // sita dalis dar nepataisyta pagal mane
+		  			
 		  		"SELECT SQL_CALC_FOUND_ROWS " 
 					+ 	"`patiekalai`.`id` AS `pat_id` "
 					+ 	", `patiekalai`.`pav` AS `patiekalas` "
-					+ 	", `patiekalai`.`trukme_ruosimo` AS `ruosti` "
-					+ 	", `patiekalai`.`trukme_kaitinimo` AS `kaitinti` "
-					+ 	", `patiekalai`.`kaina` AS `kaina_patiek` "
+					//+ 	", `patiekalai`.`trukme_ruosimo` AS `ruosti` "
+					//+ 	", `patiekalai`.`trukme_kaitinimo` AS `kaitinti` "
+					//+ 	", `patiekalai`.`kaina` AS `kaina_patiek` "
 					+ 	", COUNT(*) AS `uzsakymu` "
 					+ 	", SUM(`uzsakymai`.`kaina`) AS `uz_suma` "
 					+ 	", `uzsakymai`.`pav` AS `pav_uzsakymo` "
@@ -61,8 +64,12 @@ public class PatiekalaiRekomenduojami {
 				+ " ORDER BY"
 				+	   " `uzsakymu` DESC "
 					;
-		  	System.out.println ( qw_top_patiekalai );
-		    Query query = em.createNativeQuery ( qw_top_patiekalai );
-		    return (List<Pasiulymai>) query.getResultList();
-	  		}    
+					
+					
+				*/
+	  
+		  	//System.out.println ( qw_top_patiekalai );
+		    //Query query = em.createNativeQuery ( qw_top_patiekalai );
+		    //return (List<Pasiulymai>) query.getResultList();
+	  		//}    
 	  }	  
