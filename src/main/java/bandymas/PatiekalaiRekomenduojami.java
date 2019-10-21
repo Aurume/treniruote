@@ -1,19 +1,11 @@
 package bandymas;
 
 //import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.List;
-
-
-//import javax.persistence.PersistenceContext;
-//import javax.persistence.EntityManager;
-//import javax.persistence.Query;
-import javax.persistence.*;
+import javax.persistence.EntityManagerFactory;
 import org.hibernate.Session;
-
-//import org.springframework.data.repository.CrudRepository;
-//import org.springframework.stereotype.Repository;
-
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 /**
  * @author User
@@ -23,53 +15,78 @@ import org.hibernate.Session;
 //@Repository
 public class PatiekalaiRekomenduojami {														//šita dalį padaryti kai jau turėsiu mėgstamiausius patiekalus.
 	 
-   // @Autowired //(unitName="TopPatiekalaiAtaskaita")	
-	  protected Session em;	
-	
-	  public PatiekalaiRekomenduojami(  Session em  ) {
-		  
-		    this.em = em;
-	  }	
+	  protected Session em;
 	  
-	  /*public List<Pasiulymai> Pasiulymai( String laikotarpis_nuo, String laikotarpis_iki ) {
+	  protected EntityManagerFactory factory;	
+		
+	  public SessionFactory sessionFactory() {
+			
+	        if (this.factory.unwrap(SessionFactory.class) == null) {
+	            throw new NullPointerException("factory is not a hibernate factory");
+	        }
+		        return this.factory.unwrap(SessionFactory.class);
+		}	
+	  
+	  public PatiekalaiRekomenduojami(EntityManagerFactory factory) {
+		  
+		  this.factory = factory; 
+		  this.em = this.sessionFactory().openSession(); 
+				
+	  }				
+	
+	  
+	  public List<KlientaiPatiekalai> mazDaznPatiekalai( Integer klientai_id ) {
 		  
 		  	String qw_top_patiekalai =
-		  
-	
-		  // sita dalis dar nepataisyta pagal mane
 		  			
-		  		"SELECT SQL_CALC_FOUND_ROWS " 
-					+ 	"`patiekalai`.`id` AS `pat_id` "
-					+ 	", `patiekalai`.`pav` AS `patiekalas` "
-					//+ 	", `patiekalai`.`trukme_ruosimo` AS `ruosti` "
-					//+ 	", `patiekalai`.`trukme_kaitinimo` AS `kaitinti` "
-					//+ 	", `patiekalai`.`kaina` AS `kaina_patiek` "
-					+ 	", COUNT(*) AS `uzsakymu` "
-					+ 	", SUM(`uzsakymai`.`kaina`) AS `uz_suma` "
-					+ 	", `uzsakymai`.`pav` AS `pav_uzsakymo` "
-					+ "FROM "
-					+ 		"`patiekalai` "  
-					+ "LEFT JOIN "
-					+ "		`uzsakymai` ON ( "
-					
-					+ 			"`uzsakymai`.`id_patiekalo`=`patiekalai`.`id` "
-					+ 		") "
-					+ "WHERE "
-					+ 		"1 "
-					+ "AND "
-					+  		"SUBSTRING( `uzsakymai`.`laikas_uzsakymo`,1, 10 )" 
-								+ " BETWEEN '" + laikotarpis_nuo + "' AND '" + laikotarpis_iki + "' " 	
-				+ " GROUP BY" 
-				+	   " `patiekalai`.`id` "
-				+ " ORDER BY"
-				+	   " `uzsakymu` DESC "
-					;
-					
-					
-				*/
-	  
-		  	//System.out.println ( qw_top_patiekalai );
-		    //Query query = em.createNativeQuery ( qw_top_patiekalai );
-		    //return (List<Pasiulymai>) query.getResultList();
-	  		//}    
+		  			
+		  	// atrodo lyg ir pataisyta pavadinimai pagal mane		
+		  
+		  			 " ( " + 
+		  			"SELECT "
+		  			  		+ 	"patiekalai.id AS id, "
+		  			  		+ 	"patiekalai.pav AS pavadinimas, "
+		  			  		+ 	"COUNT(*) AS uzsakymu "
+		  			  		+ "FROM "
+		  			  		+ 	"klientai_patiekalai AS klientai_patiekalai "
+		  			  		+ "LEFT JOIN "
+		  			  		+ 	"patiekalai ON (patiekalai.id=klientai_patiekalai.patiekalai_id) "
+		  			  		+ "WHERE klientai_patiekalai.klientai_id=" + klientai_id + " "
+		  			  		+ "GROUP BY "
+		  			  		+ 	"klientai_patiekalai.patiekalai_id "
+		  			  		+ "ORDER BY uzsakymu DESC LIMIT 1 " 
+		  			  		+ " ) UNION ("
+		  			  		+ "SELECT "
+		  			  		+ 	"patiekalai.id AS id, "
+		  			  		+ 	"patiekalai.pav AS pavadinimas, "
+		  			  		+ 	"COUNT(klientai_patiekalai.id) AS uzsakymu "
+		  			  		+ "FROM "
+		  			  		+ 	"patiekalai "
+		  			  		+ "LEFT JOIN "
+		  			  		+ 	"klientai_patiekalai ON ("
+		  			  		+ 		"patiekalai.id=klientai_patiekalai.patiekalai_id"
+		  			  		+     " AND "
+		  			  		+       "klientai_patiekalai.klientai_id=" + klientai_id + " "
+		  			  		+ ") "
+		  					+ "LEFT JOIN "
+		  					+ "		`klientai` ON ( "
+		  					
+		  					+ 			"`klientai`.`id`=" + klientai_id 
+		  					+ 		" ) "	  		
+		  			  		+ " WHERE"
+		  			  		+ " ( NOT  IFNULL(klientai.flag_alerg_riesutai,0) ) OR ( NOT IFNULL(patiekalai.flag_yra_riesutai,0) )"
+		  			  		+ " AND "
+		  			  		+ "	( NOT IFNULL(klientai.flag_alerg_pieno,0 ) ) OR ( NOT IFNULL(patiekalai.flag_yra_pieno,0) )"
+		  			  		+ " GROUP BY "
+		  			  		+ 	"patiekalai.id "
+		  			  		+ " ORDER BY uzsakymu ASC LIMIT 1 "
+		  			  		+ ")"
+		  			  		+ ""
+		  						;
+		  			  	System.out.println ( qw_top_patiekalai );
+		  			    Query<KlientaiPatiekalai> query = em.createNativeQuery ( qw_top_patiekalai );
+
+		  			    return (List<KlientaiPatiekalai>) query.getResultList();
+		  		  }	  					
+		  	    
 	  }	  

@@ -25,7 +25,7 @@ public class Patiekalai {
 	 private List<KlientaiPatiekalai> klientaiPatiekalai;
 
 	  @OneToMany(mappedBy = "patiekalai",cascade = CascadeType.ALL)
-	private List<Klientai> klientai;    
+	private List<KlientaiPatiekalai> klientaiPatiekalai;    
 */
 	 public Patiekalai () {
 		 
@@ -106,20 +106,19 @@ public class Patiekalai {
 	}
 	
 	
-	/*
 	/**
 	 * @return the uzsakymai
-	 */
-	//public List<Uzsakymai> getUzsakymai() {
-		//return uzsakymai;
-	//} 
+	 *
+	public List<KlientaiPatiekalai> getKlientaiPatiekalai() {
+		return klientaiPatiekalai;
+	} 
 
-	///**
-	 //* @param uzsakymai the uzsakymai to set
-	 //*/
-	//public void setUzsakymai(List<Uzsakymai> uzsakymai) {
-		//this.uzsakymai = uzsakymai;
-	//}	
+	/**
+	 * @param uzsakymai the  to set
+	 *
+	public void setKlientaiPatiekalai(List<KlientaiPatiekalai> klientaiPatiekalai) {
+		this.klientaiPatiekalai = klientaiPatiekalai;
+	}	*/
  
 }
 

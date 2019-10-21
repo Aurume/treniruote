@@ -8,4 +8,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface KlientaiPatiekalaiRepository extends CrudRepository<KlientaiPatiekalai,Integer> {
 
+	Iterable<KlientaiPatiekalai> findByKlientaiId(Integer id);
+
 }

@@ -96,6 +96,19 @@
 					}
 				);				
 				
+				var rekom;
+				
+				$.ajax({
+						url: "http://localhost:8080/ajax/kliento?id="  + id
+				}).done(
+				
+					function( rekomendacijos ) {
+				
+						rekom = rekomendacijos;
+						alert (rekom );
+						
+					}
+				);				
 			}
 		});			
 	</script>

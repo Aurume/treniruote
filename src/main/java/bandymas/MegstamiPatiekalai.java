@@ -12,7 +12,9 @@ import org.hibernate.Session;
 //import org.springframework.data.repository.CrudRepository;
 //import org.springframework.stereotype.Repository;
 
-public List<MegstamiPatiekalai> megstamiPatiekalai( String laikotarpis_nuo, String laikotarpis_iki ) {
+public class MegstamiPatiekalai { /*
+
+	public List<MegstamiPatiekalai> megstamiPatiekalai( String laikotarpis_nuo, String laikotarpis_iki ) {
 	  
   	String qw_top_patieklai =
   				
@@ -43,9 +45,9 @@ public List<MegstamiPatiekalai> megstamiPatiekalai( String laikotarpis_nuo, Stri
 		+	   " `uzsakymu` DESC "
 			;
   	System.out.println ( qw_top_patieklai );
-    Query query = em.createNativeQuery ( qw_top_patieklai );
-    return (List<TopPatiekalai>) query.getResultList();
-	}	  
+    //Query query = em.createNativeQuery ( qw_top_patieklai );
+    //return (List<TopPatiekalai>) query.getResultList();
+	}	  */
 
 }
 
