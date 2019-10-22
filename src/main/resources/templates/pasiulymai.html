@@ -40,19 +40,13 @@
 					pav
 				</td>
 				<td>					
-					apras
+					yra pieno
 				</td>
 				<td>					
-					poilsinė
+					yra riešutų
 				</td>
 				<td>					
-					pažintinė
-				</td>
-				<td>					
-					viskas<br>įsk
-				</td>
-				<td>					
-					flaisv. <br>pasir.
+					kiekis
 				</td>
 			</tr>
 			<tr th:each="pasiulymas : ${lst_pasiulymai}">
@@ -60,9 +54,11 @@
 				<td th:text="${pasiulymas[1]}"></td>				
 				<td th:text="${pasiulymas[2]}"></td>
 				<td th:text="${pasiulymas[3]}"></td>
+				<!--
 				<td th:text="${pasiulymas[4]}"></td>
 				<td th:text="${pasiulymas[5]}"></td>
 				<td th:text="${pasiulymas[6]}"></td>
+				-->
 			</tr>
 		</table>	
 	
