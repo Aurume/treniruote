@@ -38,6 +38,7 @@
 		$( document ).ready ( function() {
 		
 			var id;
+			var rekom;			
 		
 			// let
 			searchParams = new URLSearchParams(window.location.search);
@@ -96,20 +97,43 @@
 					}
 				);				
 				
-				var rekom;
-				
 				$.ajax({
 						url: "http://localhost:8080/ajax/kliento?id="  + id
 				}).done(
 				
 					function( rekomendacijos ) {
-				
-						rekom = rekomendacijos;
-						alert (rekom );
-						
+						// 1. rekom = rekomendacijos
+						rekom = mapFields ( rekomendacijos, [ 'id', 'pav', 'kiekis' ] ); // 2-as būdas
 					}
 				);				
 			}
+			
+			function mapFields ( list, fields ) {
+			
+				list_mapped = [];
+			
+				for ( i = 0; i < list.length; i++ ) {
+				
+					row = {};
+					
+					for ( k = 0; k < fields.length; k++ ) {
+					
+						row[ fields [ k ] ] = list [ i ] [ k ];
+					}
+					list_mapped.push ( row );
+				}
+				return list_mapped;
+			}
+			
+			function pasiulyk(){
+			
+				alert ( JSON.stringify  ( rekom ) );
+			}
+			
+			$( '#rekom' ).click( function() {
+			
+				pasiulyk();
+			});
 		});			
 	</script>
 </head>
@@ -128,6 +152,9 @@
 </form>
 </div>
 	<div id="patiekalai">
+	</div>
+	<div id="pasiulymai">
+	<input type="button" id="rekom" value="Pasiūlyti">
 	</div>
 </body>
 </html>
